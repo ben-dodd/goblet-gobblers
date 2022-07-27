@@ -100,12 +100,15 @@ function handleDrop(piece, tile) {
 function handleHoverOverPiece(e) {
   let defender = e.target
   let attacker = dragged
+  console.log(defender)
+  console.log(attacker)
+  console.log(`./assets/${getPieceColor(attacker)}/piece-happy.gif`)
   if (getSize(attacker) > getSize(defender)) {
-    attacker.src = `./assets/piece-happy.gif`
-    defender.src = `assets/piece-scared.gif`
+    attacker.src = `./assets/${getPieceColor(attacker)}/piece-happy.gif`
+    defender.src = `assets/${getPieceColor(defender)}/piece-scared.gif`
   } else {
-    attacker.src = `./assets/piece-worried.gif`
-    defender.src = `assets/piece-happy.gif`
+    attacker.src = `./assets/${getPieceColor(attacker)}/piece-worried.gif`
+    defender.src = `assets/${getPieceColor(defender)}/piece-happy.gif`
   }
 }
 
@@ -113,16 +116,16 @@ function handleLeavePiece(e) {
   let defender = e.target
   let attacker = dragged
   if (getSize(attacker) > getSize(defender)) {
-    attacker.src = `./assets/piece-happy.gif`
-    defender.src = `assets/piece-happy.gif`
+    attacker.src = `./assets/${getPieceColor(attacker)}/piece-happy.gif`
+    defender.src = `assets/${getPieceColor(defender)}/piece-happy.gif`
   } else {
-    attacker.src = `./assets/piece-worried.gif`
-    defender.src = `assets/piece-sleepy.gif`
+    attacker.src = `./assets/${getPieceColor(attacker)}/piece-worried.gif`
+    defender.src = `assets/${getPieceColor(defender)}/piece-sleepy.gif`
   }
 }
 
 function handleClick(e) {
-  e.target.src = `./assets/piece-scared.gif`
+  e.target.src = `./assets/${getPieceColor(e.target)}/piece-scared.gif`
 }
 
 function placePiece(piece, tile) {
@@ -130,8 +133,8 @@ function placePiece(piece, tile) {
   piece.draggable = false
   tile.appendChild(piece)
   switchPlayers()
-  checkStaleMate()
   checkGameWin()
+  checkStaleMate()
 }
 
 function checkGameWin() {
@@ -170,7 +173,7 @@ function resetTray(tray, color) {
   }
   for (let i = 1; i < 7; i++) {
     const piece = document.createElement('img')
-    piece.src = `./assets/piece-happy.gif`
+    piece.src = `./assets/${color}/piece-happy.gif`
     piece.draggable = color === player
     piece.className = `piece ${color} size-${i}`
     piece.addEventListener('click', handleClick)
@@ -203,7 +206,7 @@ function getSize(piece) {
 
 function handleSleep(piece) {
   // console.log(piece)
-  piece.src = `./assets/piece-sleepy.gif`
+  piece.src = `./assets/${getPieceColor(piece)}/piece-sleepy.gif`
 }
 
 function random(min, max) {
@@ -236,8 +239,13 @@ function setWinCombo(combo) {
   document.querySelectorAll('.tile').forEach((tile, i) => {
     if (combo.includes(i)) {
       let piece = tile.lastChild
-      piece.src = `./assets/piece-happy.gif`
+      piece.src = `./assets/${getPieceColor(piece)}/piece-win.gif`
       piece.classList.add('piece-win')
     }
   })
+}
+
+function getPieceColor(piece) {
+  if (piece.classList.contains('purple')) return 'purple'
+  else return 'green'
 }

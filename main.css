@@ -48,6 +48,40 @@ h2:hover {
   opacity: 60%;
 }
 
+header {
+  padding: 0.5em;
+  background-size: 800% 100%;
+  background-image: linear-gradient(
+    45deg,
+    hsl(281, 49%, 39%),
+    hsl(281, 30%, 74%),
+    hsl(130, 30%, 74%),
+    hsl(130, 49%, 39%)
+  );
+  color: #f7f7f7;
+  animation-name: gradient;
+  animation-duration: 20s;
+  animation-timing-function: cubic-bezier(0.8, 0, 0.2, 1);
+  animation-iteration-count: infinite;
+}
+
+.breadcrumb-link {
+  color: hsl(0, 0%, 100%);
+  opacity: 60%;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 #game-table {
   display: flex;
   justify-content: center;
@@ -71,7 +105,7 @@ h2:hover {
 }
 
 .purple {
-  filter: hue-rotate(180deg);
+  /* filter: hue-rotate(180deg); */
 }
 
 .green {
@@ -142,25 +176,25 @@ h2:hover {
 }
 
 .size-6 {
-  width: 220px;
+  width: 120px;
 }
 
 .size-5 {
-  width: 190px;
-}
-
-.size-4 {
-  width: 160px;
-}
-
-.size-3 {
-  width: 130px;
-}
-
-.size-2 {
   width: 100px;
 }
 
+.size-4 {
+  width: 80px;
+}
+
+.size-3 {
+  width: 60px;
+}
+
+.size-2 {
+  width: 40px;
+}
+
 .size-1 {
-  width: 70px;
+  width: 20px;
 }
