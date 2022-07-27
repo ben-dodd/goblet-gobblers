@@ -1,0 +1,166 @@
+/* Game board and text not responsive yet*/
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Sacramento&family=Source+Serif+Pro:wght@200&family=Mali:wght@700&display=swap');
+
+html {
+  /* font-size: 5vw; */
+}
+
+body {
+  font-family: 'Concert One', cursive;
+  margin: 0;
+}
+
+table {
+  /* margin-right: center;
+  margin-left: center;
+  margin: 0 auto; */
+  border-spacing: 0;
+  border-collapse: collapse;
+  font-family: 'Mali', cursive;
+  font-size: 2rem;
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2vw;
+  color: #4c2c92;
+}
+
+h2:hover {
+  color: #9176ce;
+}
+
+.flex-container {
+  height: 100vh;
+  width: 100vw;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.breadcrumb-link {
+  color: hsl(0, 0%, 100%);
+  opacity: 60%;
+}
+
+#game-table {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 100vw;
+}
+
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 12vw);
+  grid-template-rows: repeat(3, 12vw);
+}
+
+.tile {
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: #404040 solid 3px;
+  cursor: default;
+}
+
+.purple {
+  filter: hue-rotate(180deg);
+}
+
+.green {
+}
+
+.pieces-tray {
+  background-color: gray;
+  width: 160px;
+  text-align: center;
+}
+
+.over {
+  background-color: rgb(238, 233, 204);
+}
+
+#title {
+  text-align: center;
+  font-size: 1.5rem;
+  height: 2vh;
+  padding: 2rem;
+  /* font-family: 'Mali', cursive; */
+}
+
+#init {
+  cursor: pointer;
+}
+
+.main-container {
+  margin-top: '20px';
+  width: 100vw;
+  padding: auto;
+}
+
+/* .piece {
+  filter: drop-shadow(20px -5px 20px rgba(34, 34, 34, 0.401));
+} */
+
+.piece-win {
+  animation-name: win;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.piece-win-purple {
+  animation-name: win-purple;
+}
+
+@keyframes win {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes win-purple {
+  0% {
+    filter: hue-rotate(180deg);
+  }
+  50% {
+    filter: hue-rotate(360deg);
+  }
+  100% {
+    filter: hue-rotate(179deg);
+  }
+}
+
+.size-6 {
+  width: 220px;
+}
+
+.size-5 {
+  width: 190px;
+}
+
+.size-4 {
+  width: 160px;
+}
+
+.size-3 {
+  width: 130px;
+}
+
+.size-2 {
+  width: 100px;
+}
+
+.size-1 {
+  width: 70px;
+}
